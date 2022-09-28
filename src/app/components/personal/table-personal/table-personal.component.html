@@ -1,0 +1,86 @@
+<div class="col-md-12 px-3 mb-5">
+
+    <h2 class="pb-3 title-table">Personal</h2> 
+  
+    <div class="card">
+      <p-table #dt
+        [rows]="10"
+        [paginator]="true"
+        responsiveLayout="stack"
+        [value]="personales"
+        [rowHover]="true"
+        [globalFilterFields]="['nombre_P', 'clave_P']"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} registros"
+        [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="caption">
+          <div class="d-flex justify-content-between">
+            <div>
+              <button pButton pRipple label="Agregar" icon="pi pi-plus" (click)="showModalFormPersonal()" class="p-button-rounded btn-red-wine me-2"></button>
+              <!-- <button pButton pRipple label="Descargar listado" icon="pi pi-download" class="p-button-rounded btn-red-wine"></button> -->
+            </div>
+  
+            <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="filterGlobalTable($event, 'contains')" placeholder="Buscar Clave o Nombre">
+            </span>
+          </div>
+        </ng-template>
+  
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th pSortableColumn="clave_P">Clave Personal <p-sortIcon field="clave_P"></p-sortIcon></th>
+            <th pSortableColumn="rfc_P"> RFC <p-sortIcon field="rfc_P"></p-sortIcon></th>
+            <th pSortableColumn="nombre_P">Nombre Completo <p-sortIcon field="nombre_P"></p-sortIcon></th>
+            <th pSortableColumn="domicilio_P"> Domicilio Completo <p-sortIcon field="domicilio_P"></p-sortIcon></th>
+            <th pSortableColumn="edad_P"> Edad <p-sortIcon field="nombre_P"></p-sortIcon></th>
+            <th pSortableColumn="Sexo"> Sexo <p-sortIcon field="Sexo"></p-sortIcon></th>
+            <th pSortableColumn="estatus">Estatus <p-sortIcon field="estatus"></p-sortIcon></th>
+            <th>Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-personal let-columns="columns">
+          <tr>
+            <td>{{personal.clave_P}}</td>
+            <td>{{personal.rfc_P}}</td>
+            <td>{{personal.nombre_P}}</td>
+            <td>{{personal.domicilio_P}}</td>
+            <td>{{personal.edad_p}}</td>
+            <td>{{personal.sexo_P}}</td>
+            <td>
+              <p-badge *ngIf="personal.estatus" value="Activo" severity="success"></p-badge>
+              <p-badge *ngIf="!personal.estatus" value="Inactivo" severity="danger"></p-badge>
+            </td>
+            <td>
+              <button pButton 
+                pTooltip="Editar"
+                tooltipPosition="top"
+                pRipple
+                icon="pi pi-pencil"
+                (click)="showModalFormPersonal(personal.idPersonal)"
+                class="p-button-rounded btn-red-wine me-2">
+              </button>
+              <button pButton
+                pTooltip="Visualizar detalles"
+                tooltipPosition="top"
+                pRipple
+                icon="pi pi-eye"
+                (click)="showModalDetallePersonal(personal.idPersonal)"
+                class="p-button-rounded btn-pink me-2">
+              </button>
+              <p-inputSwitch [(ngModel)]="personal.deshabilitar"
+                pTooltip="Deshabilitar/Habilitar"
+                tooltipPosition="top"
+                (onChange)="disableEmpleado($event, personal.idPersonal, personal.estatus)">
+              </p-inputSwitch>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  
+  <!---Confirm dialog--->
+  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+  <p-toast></p-toast>
+  <!---End Confirm dialog--->

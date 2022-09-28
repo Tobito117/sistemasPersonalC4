@@ -1,0 +1,198 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inter-Bold";
+  src: url("./assets/fonts/Inter-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Inter-SemiBold";
+  src: url("./assets/fonts/Inter-SemiBold.ttf");
+}
+
+$color-bg: #922240;
+$color-bg-2: #9F7C7C;
+$color-bg-3: #8B7D7C;
+
+//Colores Texto
+.color-brown {
+  color: $color-bg-2;
+}
+
+//Bordes redondos para las tarjetas (Cards)
+.border-radius-12 {
+  border-radius: 12px !important;
+}
+
+//Input Switch
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+  background: #922240 !important;
+}
+
+//Botón del Datepicker (Input para seleccionar fechas)
+.p-datepicker-trigger {
+  background-color: $color-bg-3 !important;
+  border-color: $color-bg-3 !important;
+}
+
+//Estilos para el select de 'Mes' y 'Anio' para seleccionar las fechas del calendario (p-calendar)
+.p-datepicker-month, .p-datepicker-year {
+  background: #FFFFFF;
+  border: 1px solid #CED4DA;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+//Estilos para el checkbox
+.p-checkbox .p-checkbox-box.p-highlight {
+  border-color: $color-bg-2 !important;
+  background: $color-bg-2 !important;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover, .p-focus {
+  border-color: $color-bg-2 !important;
+}
+
+.p-checkbox-box.p-focus {
+  box-shadow: 0 0 0 0.2rem #f1eae8 !important;
+}
+
+.ui-chkbox-box.ui-state-focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+   box-shadow: none !important;
+}
+
+//Border de input (PrimeNG)
+.p-inputtext {
+  border-radius: 6px !important;
+  padding: .375rem .75rem !important;
+}
+
+//Títulos de las tablas
+.title-table, .inter-bold {
+  font-family: 'Inter-Bold';
+}
+
+//Estilo para la tabla de 'Horario General' para disminuir el tamaño de la fuente
+.font-small-table {
+  font-size: 13px !important;
+}
+
+//--------------------------------- Paginación de las tablas -------------------------------------------------
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  border-radius: 50% !important;
+  background-color: $color-bg-2 !important;
+  color: #FFFFFF !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover, .p-link:active, .p-paginator-element:active {
+  background-color: $color-bg-2 !important;
+  border-radius: 50% !important;
+  color: #FFFFFF !important;
+}
+
+.p-link:focus, .p-paginator-element:focus {
+  box-shadow: 0 0 0 0.2rem $color-bg-2 !important;
+  border-radius: 50% !important;
+}
+//--------------------------------- End Paginación de las tablas -------------------------------------------------
+
+//Título del modal 'Agregar Departamento'
+.p-dialog-title {
+  color: #000000 !important;
+  font-size: 25px;
+  font-family: 'Inter-SemiBold' !important;
+}
+
+//------------------------- Botones --------------------------
+.btn-red-wine, .p-confirm-dialog-accept {
+  background-color: $color-bg !important;
+  border: 1px solid $color-bg !important;
+}
+
+.btn-red-wine:hover {
+  background-color: $color-bg !important;
+  border: 1px solid $color-bg !important;
+}
+
+.btn-pink {
+  background-color: $color-bg-2 !important;
+  border: 1px solid $color-bg-2 !important;
+}
+
+.btn-pink:hover {
+  background-color: $color-bg-2 !important;
+  border: 1px solid $color-bg-2 !important;
+}
+
+.btn-gray, .p-confirm-dialog-reject {
+  background-color: $color-bg-3 !important;
+  border: 1px solid $color-bg-3 !important;
+}
+
+.btn-gray:hover {
+  background-color: $color-bg-3 !important;
+  border: 1px solid $color-bg-3 !important;
+}
+//------------------------- End Botones --------------------------
+
+
+//--------------------------Botones 'Aceptar y Cancelar' del Modal 'Confirmar' --------------------------------------
+.p-confirm-dialog-accept {
+  border-radius: 2rem !important;
+}
+
+.p-confirm-dialog-accept:active {
+  border-color: $color-bg !important;
+}
+
+.p-confirm-dialog-accept:focus {
+  box-shadow: 0 0 0 0.2rem $color-bg !important;
+}
+
+.p-confirm-dialog-reject {
+  border-radius: 2rem !important;
+  color: #FFFFFF !important;
+}
+
+.p-confirm-dialog-reject:active {
+  border-color: $color-bg-3 !important;
+}
+
+.p-confirm-dialog-reject:focus {
+  box-shadow: 0 0 0 0.2rem $color-bg-3 !important;
+}
+//--------------------------End Botones 'Aceptar y Cancelar' del Modal 'Confirmar' --------------------------------------
+
+//Loading spinner
+.progress-spinner {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.progress-spinner:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+//End Loading spinner

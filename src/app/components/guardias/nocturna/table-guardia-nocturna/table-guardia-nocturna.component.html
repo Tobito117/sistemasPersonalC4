@@ -1,0 +1,51 @@
+<div class="col-md-12 px-3">
+
+  <h2 class="pb-3 title-table">Horario de guardia nocturna</h2>
+
+  <div class="card">
+    <p-table #dt
+      [rows]="10"
+      [paginator]="true"
+      responsiveLayout="stack"
+      [value]="prueba"
+      [rowHover]="true"
+      [globalFilterFields]="['clave', 'descripcion']"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} registros"
+      [rowsPerPageOptions]="[10,25,50]">
+      <ng-template pTemplate="caption">
+        <div class="d-flex justify-content-between">
+
+          <span class="p-input-icon-left">
+            <input pInputText type="text" placeholder="Buscar por clave o descripción">
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+          <th pSortableColumn="departamento">Departamento <p-sortIcon field="departamento"></p-sortIcon></th>
+          <th pSortableColumn="fecha">Fecha <p-sortIcon field="fecha"></p-sortIcon></th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-prueba let-columns="columns">
+        <tr>
+          <td>{{prueba.nombre}}</td>
+          <td>{{prueba.departamento}}</td>
+          <td>{{prueba.fecha | date: 'longDate'}}</td>
+          <td>
+            <button pButton 
+              pTooltip="Editar"
+              tooltipPosition="top"
+              pRipple
+              icon="pi pi-pencil"
+              class="p-button-rounded btn-red-wine me-2">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

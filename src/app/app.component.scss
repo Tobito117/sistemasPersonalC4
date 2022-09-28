@@ -1,0 +1,15 @@
+* {
+  font-family: Inter;
+}
+
+.container-content {
+  margin:0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 6.85rem);
+  background-image: url('../assets/img/background.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+

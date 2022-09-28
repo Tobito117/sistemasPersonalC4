@@ -1,0 +1,76 @@
+<div class="col-md-12 px-3">
+
+  <div class="col-12 pt-4">
+    <button pButton 
+      pRipple 
+      type="button" 
+      icon="pi pi-arrow-left" 
+      [routerLink]="['/asignar-horarios']"
+      class="p-button-rounded btn-pink mb-2">
+    </button>
+  </div>
+
+  <h5>Horarios del empleado</h5>
+  <h2 class="pb-3 title-table">{{empleado.nombre}} {{empleado.apPaterno}} {{empleado.apMaterno}}</h2> 
+
+  <div class="row">
+    <!-- <h2 class="title-table text-decoration-underline text-center color-brown">2022</h2> -->
+
+    <!-- <div class="col-md-4 text-center" *ngFor="let horario of horariosDelEmpleado" [routerLink]="['/asignar-horarios/empleado/1']">
+      <p-card header="{{setMesById(horario.mes)}}">
+        <i class="pi color-brown pi-calendar" style="font-size: 5rem"></i>
+      </p-card>
+    </div> -->
+
+    <div class="col-md-12 mb-5 text-center" *ngFor="let horario of horarioTemp">
+      <h2 class="title-table text-decoration-underline text-center color-brown">{{horario.anio}}</h2>
+
+      <div class="row">
+        <div class="col-md-4 text-center" *ngFor="let item of horario.meses">
+          <div style="cursor: pointer;">
+            <p-card header="{{setMesById(item.mes)}}" [routerLink]="['/asignar-horarios/empleado', idEmpleado, 'registro-horario', item.idHorarioEmpleado]">
+              
+              <i class="pi color-brown pi-calendar" style="font-size: 5rem"></i>
+
+              <hr>
+
+              <div class="row d-flex justify-content-between">
+                <div class="col-2">
+                  <p-badge *ngIf="item.estatus" value="Habilitado" severity="success"></p-badge>
+                  <p-badge *ngIf="!item.estatus" value="Inhabilitado" severity="danger"></p-badge>
+                </div>
+                <div class="col-4">
+                  <button pButton
+                    (click)="disableHorarioEmpleado(item.idHorarioEmpleado, item.estatus, $event)"
+                    pRipple
+                    pTooltip="Habilitar horario del mes"
+                    tooltipPosition="top"
+                    type="button"
+                    icon="pi pi-check"
+                    class="p-button-rounded me-2 p-button-success p-button-outlined">
+                  </button>
+
+                  <button pButton
+                    (click)="disableHorarioEmpleado(item.idHorarioEmpleado, item.estatus, $event)"
+                    pRipple
+                    pTooltip="Deshabilitar horario del mes"
+                    tooltipPosition="top"
+                    type="button"
+                    icon="pi pi-times" 
+                    class="p-button-rounded p-button-danger p-button-outlined">
+                  </button>
+                </div>
+              </div>
+            </p-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!---Confirm dialog--->
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
+<!---End Confirm dialog--->

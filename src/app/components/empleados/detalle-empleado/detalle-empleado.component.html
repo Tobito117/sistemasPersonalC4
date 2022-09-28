@@ -1,0 +1,193 @@
+<dl>
+  <div class="row">
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Nombre</dt>
+        <dd>{{empleado.nombre}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Apellido paterno</dt>
+        <dd>{{empleado.apPaterno}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Apellido materno</dt>
+        <dd>{{empleado.apMaterno}}</dd>
+      </div>
+    </div>
+  </div>
+
+  <h6 class="color-label">Datos generales</h6>
+  <hr>
+  <div class="row">
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Correo electrónico</dt>
+        <dd>{{empleado.correo}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Número de teléfono</dt>
+        <dd>{{empleado.numTelefonico}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Fecha de nacimiento</dt>
+        <dd>{{empleado.fechaNacimiento | date: 'longDate'}}</dd>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="row">
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Estado civil</dt>
+        <dd>{{empleado.estadoCivil}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Género</dt>
+        <dd>{{empleado.genero}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Hijos</dt>
+        <dd *ngIf="empleado.hijos">Sí tiene</dd>
+        <dd *ngIf="!empleado.hijos">No tiene</dd>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Domicilio completo</dt>
+        <dd>{{empleado.domicilioCompleto}}</dd>
+      </div>
+    </div>
+  </div>
+
+  <h6 class="color-label">Datos institucionales</h6>
+  <hr>  
+  <div class="row">
+    <div class="col-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Puesto</dt>
+        <dd>{{nombrePuesto}}</dd>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Corporación</dt>
+        <dd>{{nombreCorporacion}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Recurso de pago</dt>
+        <dd>{{nombreRecursoPago}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">CUIP</dt>
+        <dd *ngIf="empleado.cuip != ''">{{empleado.cuip}}</dd>
+        <dd class="fst-italic" *ngIf="empleado.cuip == ''">Dato no proporcionado</dd>
+      </div>
+    </div>
+  </div>
+
+  <h6 class="color-label">Datos académicos</h6>
+  <hr>
+  <div class="row">
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Grado Académico</dt>
+        <dd>{{nombreGradoAcademico}}</dd>
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Carrera</dt>
+        <dd>{{nombreCarrera}}</dd>
+      </div>
+    </div>
+  </div>
+
+  
+  <h6 class="color-label">Datos personales</h6>
+  <hr>
+  <div class="row">
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">CURP</dt>
+        <dd>{{empleado.curp}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">RFC</dt>
+        <dd>{{empleado.rfc}}</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Tipo de sangre</dt>
+        <dd *ngIf="empleado.tipoSangre != ''">{{empleado.tipoSangre}}</dd>
+        <dd class="fst-italic" *ngIf="empleado.tipoSangre == ''">Dato no proporcionado</dd>
+      </div>
+    </div>
+  </div>
+  
+  <h6 class="color-label">Otros datos</h6>
+  <hr>
+  <div class="row">
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Certificado de vacunación</dt>
+        <dd *ngIf="empleado.certificadoVacunacion">Sí</dd>
+        <dd *ngIf="!empleado.certificadoVacunacion">No</dd>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Vacaciones</dt>
+        <dd>{{empleado.vacaciones}}</dd>
+      </div>
+    </div>    
+  </div>
+
+  <!-- <div class="bg-data mb-3">
+    <dt class="color-label">Descripción</dt>
+    <dd *ngIf="puesto.descripcion != null">{{puesto.descripcion}}</dd>
+    <dd *ngIf="puesto.descripcion == null" class="fst-italic">(Dato no proporcionado)</dd>
+  </div>
+
+  <div class="bg-data mb-3">
+    <dt class="color-label">Departamento al que pertenece</dt>
+    <dd>{{nombreDepartamento}}</dd>
+  </div> -->
+</dl>
+
+<div class="d-flex justify-content-end">
+  <button type="button" pButton (click)="closeModal()" class="p-button-rounded btn-red-wine me-3" label="Aceptar"></button>
+</div>

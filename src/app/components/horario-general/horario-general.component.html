@@ -1,0 +1,65 @@
+<div class="col-md-12 px-3 mb-5">
+
+  <h2 class="title-table">Horario General - Dirección Técnica</h2> 
+  <h5 class="pb-3">Correspondiente al mes de Marzo 2022</h5>
+
+  <div class="card">
+    <p-table 
+      #dt
+      [value]="datosHorario" 
+      stateStorage="local"
+      dataKey="id"
+      styleClass="p-datatable-sm font-small-table" 
+      [rows]="10"
+      [paginator]="true"
+      [rowHover]="true"
+      [globalFilterFields]="['departamento']"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} registros"
+      [rowsPerPageOptions]="[10,25,50]"
+      responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <!-- <th rowspan="2">Departamento</th> -->
+          <th  pSortableColumn="departamento">Departamento <p-sortIcon field="nombre"></p-sortIcon></th>
+          <th >Nombre</th>
+          <th >Puesto</th>
+          <th *ngFor="let item of labelsDiasSemana">{{item}}</th>
+        </tr>
+        <tr>
+          <th>
+            <p-columnFilter field="departamento" matchMode="in" [showMenu]="false">
+              <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                <p-multiSelect [ngModel]="value" [options]="departamentos" placeholder="Todos"
+                  (onChange)="filter($event.value)" optionLabel="label" optionValue="value" appendTo="body">
+                </p-multiSelect>
+              </ng-template>
+            </p-columnFilter>
+          </th>
+
+          <th>
+            <input pInputText type="text" (input)="dt.filter($any($event.target).value, 'nombre', 'contains')" placeholder="Buscar por nombre" class="p-column-filter">
+          </th>
+          <th></th>
+          <th *ngFor="let item of labelsNombresDiasSemana">{{item}}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr>
+          <td>{{data.departamento}}</td>
+          <td>{{data.nombre}}</td>
+          <td>{{data.puesto}}</td>
+          <td *ngFor="let item of data.dias" class="text-white fw-bolder" [ngStyle]="{'background-color': item.color}">{{item.clave}}</td>
+        </tr>
+        <tr>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<!---Confirm dialog--->
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast></p-toast>
+<!---End Confirm dialog--->

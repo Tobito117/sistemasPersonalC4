@@ -1,0 +1,68 @@
+<div class="col-md-12 px-3">
+
+  <div class="row">
+
+    <!-- Loading spinner -->
+    <div class="progress-spinner" *ngIf="loading">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+    <!-- End Loading spinner -->
+
+    <div class="col-12">
+      <button pButton 
+        pRipple 
+        type="button" 
+        icon="pi pi-arrow-left" 
+        [routerLink]="['/asignar-horarios/empleado', idEmpleado]"
+        class="p-button-rounded btn-pink mb-2">
+      </button>
+    </div>
+
+    <h2 class="title-table mb-4">Asignar horario a {{empleado.nombre}} {{empleado.apPaterno}} {{empleado.apMaterno}}</h2>
+
+    <div class="col-md-3">
+      <div #external>
+        <p-listbox [options]="catalogoHorarios" [filter]="true" optionLabel="descripcion" [listStyle]="{'max-height':'250px'}">
+          <ng-template pTemplate="header">
+              Horarios disponibles
+          </ng-template>
+          <ng-template let-item pTemplate="item" >
+            <div class=" horario w-100">
+              <div class="{{item.color}} {{item.idCatalogoHorario}}">{{item.clave}} - {{item.descripcion}}</div>
+            </div>
+          </ng-template>
+        </p-listbox>
+      </div>
+
+      <small>INSTRUCCIONES: Arrastre el horario a la cuadrícula del calendario</small>
+
+      <button pButton 
+        pRipple 
+        (click)="deleteAllEvents()"
+        icon="pi pi-trash"
+        label="Eliminar todos los horarios del calendario"
+        class="p-button-rounded btn-gray mt-4 mb-4">
+      </button>
+
+      <div class="text-center">
+        <button pButton
+          pRipple
+          label="Guardar datos del horario"
+          icon="pi pi-check"
+          (click)="saveHorario()"
+          class="p-button-rounded btn-red-wine">
+        </button>
+      </div>
+      
+    </div>
+    <div class="col-md-9">
+      <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+    </div>
+  </div>
+
+</div>
+
+<!---Confirm dialog--->
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
+<!---End Confirm dialog--->

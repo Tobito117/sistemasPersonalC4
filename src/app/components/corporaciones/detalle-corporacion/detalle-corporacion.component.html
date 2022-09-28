@@ -1,0 +1,25 @@
+<dl>
+  <div class="bg-data mb-3">
+    <dt class="color-label">Nombre</dt>
+    <dd>{{corporacion.nombre}}</dd>
+  </div>
+
+  <div class="bg-data mb-3">
+    <dt class="color-label">Siglas</dt>
+    <dd>{{corporacion.siglas}}</dd>
+  </div>
+
+  <div class="bg-data mb-3">
+    <dt class="color-label">Dirección</dt>
+    <dd>{{corporacion.direccion}}</dd>
+  </div>
+
+  <div class="bg-data mb-3">
+    <dt class="color-label">Teléfono</dt>
+    <dd>{{corporacion.telefono}}</dd>
+  </div>
+</dl>
+
+<div class="d-flex justify-content-end">
+  <button type="button" pButton (click)="closeModal()" class="p-button-rounded btn-red-wine me-3" label="Aceptar"></button>
+</div>

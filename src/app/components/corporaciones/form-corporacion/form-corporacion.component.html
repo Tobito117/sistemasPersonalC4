@@ -1,0 +1,33 @@
+<form [formGroup]="corporacionForm">
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control" [class.is-invalid]="nombreNoValido">
+      <small *ngIf="nombreNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Siglas</label>
+      <input type="text" formControlName="siglas" class="form-control" [class.is-invalid]="siglasNoValidas">
+      <small *ngIf="siglasNoValidas" class="text-danger">*Campo requerido</small>
+    </div>
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Teléfono</label>
+      <input type="tel" formControlName="telefono" class="form-control" [class.is-invalid]="telefonoNoValido">
+      <small *ngIf="telefonoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Dirección</label>
+      <input type="text" formControlName="direccion" class="form-control" [class.is-invalid]="direccionNoValida">
+      <small *ngIf="direccionNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button type="button" pButton icon="pi pi-check" (click)="saveCorporacion()" class="p-button-rounded btn-red-wine me-3" label="Guardar"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="closeModal()" class="p-button-rounded btn-gray" label="Cancelar"></button>
+  </div>
+</form>

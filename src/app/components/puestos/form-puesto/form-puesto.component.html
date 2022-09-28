@@ -1,0 +1,49 @@
+<form [formGroup]="puestoForm">
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Clave</label>
+      <input type="text" formControlName="clave" class="form-control" [class.is-invalid]="claveNoValida">
+      <small *ngIf="claveNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control" [class.is-invalid]="nombreNoValido">
+      <small *ngIf="nombreNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Descripción</label>
+      <input type="text" formControlName="descripcion" class="form-control" [class.is-invalid]="descripcionNoValida">
+      <small *ngIf="descripcionNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Departamento</label>
+      <p-dropdown 
+        [options]="departamentos" 
+        placeholder="Seleccione el departamento"
+        formControlName="fk_idDepartamento" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idDepartamento"
+        autoWidth="false"
+        [class.ng-dirty]="departamentoNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="departamentoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button type="button" pButton icon="pi pi-check" (click)="saveCorporacion()" class="p-button-rounded btn-red-wine me-3" label="Guardar"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="closeModal()" class="p-button-rounded btn-gray" label="Cancelar"></button>
+  </div>
+</form>

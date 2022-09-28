@@ -1,0 +1,33 @@
+<form [formGroup]="departamentoForm">
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control" [class.is-invalid]="nombreNoValido">
+      <small *ngIf="nombreNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Clave</label>
+      <input type="text" formControlName="clave" class="form-control" [class.is-invalid]="claveNoValido">
+      <small *ngIf="claveNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Extensión</label>
+      <input type="tel" formControlName="extension" class="form-control" [class.is-invalid]="extensionNoValido">
+      <small *ngIf="extensionNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Descripción</label>
+      <input type="text" formControlName="descripcion" class="form-control" [class.is-invalid]="descripcionNoValido">
+      <small *ngIf="descripcionNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button type="button" pButton icon="pi pi-check" (click)="saveDepartamento()" class="p-button-rounded btn-red-wine me-3" label="Guardar"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="closeModal()" class="p-button-rounded btn-gray" label="Cancelar"></button>
+  </div>
+</form>

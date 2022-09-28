@@ -1,0 +1,325 @@
+<form [formGroup]="personalForm">
+    <div class="row bg-input mb-3">
+      <div class="col-md-12">
+        <label class="form-label color-label">Clave Personal</label>
+        <input type="text" formControlName="clave_P" class="form-control" [class.is-invalid]="claveP_NoValido">
+        <small *ngIf="claveP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label">RFC </label>
+        <input type="text" formControlName="rfc_P" class="form-control" [class.is-invalid]="rfcP_NoValido">
+        <small *ngIf="rfcP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Nombre </label>
+        <input type="tel" formControlName="nombre_P" class="form-control" [class.is-invalid]="nombreP_NoValido">
+        <small *ngIf="nombreP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+    <div class="row bg-input mb-3">
+      <div class="col-md-12">
+        <label class="form-label color-label">Dirección</label>
+        <input type="text" formControlName="domicilio_P" class="form-control" [class.is-invalid]="domicilioP_NoValido">
+        <small *ngIf="domicilioP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Edad </label>
+        <input type="text" formControlName="edad_P" class="form-control" [class.is-invalid]="edadP_NoValido">
+        <small *ngIf="edadP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Sexo </label>
+        <p-dropdown 
+          [options]="generos" 
+          placeholder="Seleccione el género"
+          formControlName="sexo_P" 
+          [autoDisplayFirst]="false"
+          optionLabel="nombre" 
+          optionValue="idGenero"
+          autoWidth="false"
+          [class.ng-dirty]="sexoP_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="sexoP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label">Estado civil</label>
+        <p-dropdown 
+          [options]="estadosCiviles" 
+          placeholder="Seleccione el estado civil"
+          formControlName="ecivil_P" 
+          [autoDisplayFirst]="false"
+          optionLabel="nombre" 
+          optionValue="nombre"
+          autoWidth="false"
+          [class.ng-dirty]="ecivilP_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="ecivilP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Numero Contacto </label>
+        <input type="text" formControlName="tel_P" class="form-control" [class.is-invalid]="telP_NoValido">
+        <small *ngIf="telP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Numero Personal </label>
+        <input type="text" formControlName="telcel_P" class="form-control" [class.is-invalid]="telcelP_NoValido">
+        <small *ngIf="telcelP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+  
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label">Grupo Sanguineo </label>
+        <input type="text" formControlName="gruposan_P" class="form-control" [class.is-invalid]="gruposanP_NoValido">
+        <small *ngIf="gruposanP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Estudio </label>
+        <input type="text" formControlName="estudio_P" class="form-control" [class.is-invalid]="estudioP_NoValido">
+        <small *ngIf="estudioP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Titulo </label>
+        <input type="tel" formControlName="titulo" class="form-control" [class.is-invalid]="titulo_NoValido">
+        <small *ngIf="titulo_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Postgrado </label>
+        <input type="text" formControlName="postgrado" class="form-control" [class.is-invalid]="estudioP_NoValido">
+        <small *ngIf="estudioP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Fotografia </label>
+        <input type="tel" formControlName="fotografia" class="form-control" [class.is-invalid]="fotografia_NoValido">
+        <small *ngIf="fotografia_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Clave Categoria</label>
+        <p-dropdown 
+          [options]="pClaveCatego" 
+          placeholder="Seleccione la categoria de la persona"
+          formControlName="clave_Catego" 
+          [autoDisplayFirst]="false"
+          optionLabel="idClaveCatego" 
+          optionValue="nombre"
+          autoWidth="false"
+          [class.ng-dirty]="claveCatego_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="claveCatego_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Clave Status</label>
+        <p-dropdown 
+          [options]="Pestatus" 
+          placeholder="Seleccione el estatus de la Persona"
+          formControlName="clave_Status" 
+          [autoDisplayFirst]="false"
+          optionLabel="idPestatus" 
+          optionValue="nombre"
+          autoWidth="false"
+          [class.ng-dirty]="claveStatus_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="claveStatus_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Puesto </label>
+        <input type="text" formControlName="puesto_P" class="form-control" [class.is-invalid]="puestoP_NoValido">
+        <small *ngIf="puestoP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Clave Tipo de Contrato </label>
+        <p-dropdown 
+          [options]="pClaveTipoContrato" 
+          placeholder="Seleccione el Tipo de Contrato"
+          formControlName="clave_TipContrato"
+          [autoDisplayFirst]="false"
+          optionLabel="idClaveTipCon" 
+          optionValue="nombre"
+          autoWidth="false"
+          [class.ng-dirty]="puestoP_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="puestoP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Compensacion </label>
+        <input type="number" formControlName="compensacion_P" placeholder="Poner 0" class="form-control" [class.is-invalid]="compensacionP_NoValido">
+        <small *ngIf="compensacionP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Sueldo Neto </label>
+        <input type="text" formControlName="sueldoneto_P" class="form-control" [class.is-invalid]="sueldonetoP_NoValido">
+        <small *ngIf="sueldonetoP_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label">Fecha de Alta</label>
+        <p-calendar 
+          formControlName="fecha_alta_P"
+          [monthNavigator]="true" 
+          dateFormat="dd-M-yy" 
+          [yearNavigator]="true" 
+          yearRange="{{selectRangoFechas}}" 
+          [readonlyInput]="true" 
+          appendTo="body" 
+          [showIcon]="true"></p-calendar>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Clave Direccion </label>
+        <p-dropdown 
+          [options]="pClaveDirec" 
+          placeholder="Seleccione la Clave de Direccion "
+          formControlName="clave_Direc"
+          [autoDisplayFirst]="false"
+          optionLabel="idClaveDirec" 
+          optionValue="nombre"
+          autoWidth="false"
+          [class.ng-dirty]="claveDirec_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="claveDirec_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label"> Clave Departamento </label>
+        <p-dropdown 
+          [options]="pClaveDepto" 
+          placeholder="Seleccione la Clave del Departamento "
+          formControlName="clave_Depto"
+          [autoDisplayFirst]="false"
+          optionLabel="idClaveDepto" 
+          optionValue="nombre"
+          autoWidth="false"
+          [class.ng-dirty]="claveDepto_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="claveDepto_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between mb-3">
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Clave Horario </label>
+        <p-dropdown 
+          [options]="pClaveHorario" 
+          placeholder="Seleccione la Clave del Horario "
+          formControlName="clave_Horario"
+          [autoDisplayFirst]="false"
+          optionLabel="idClaveHorario" 
+          optionValue="nombre"
+          autoWidth="false"
+          [class.ng-dirty]="claveHorario_NoValido"
+          [showClear]="true"
+          [style]="{'width':'100%'}">
+        </p-dropdown>
+        <small *ngIf="claveHorario_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Funciones </label>
+        <input type="text" formControlName="funciones" class="form-control" [class.is-invalid]="funciones_NoValido">
+        <small *ngIf="funciones_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label">Fecha de Baja</label>
+        <p-calendar 
+          formControlName="fecha_baja_P"
+          [monthNavigator]="true" 
+          dateFormat="dd-M-yy" 
+          [yearNavigator]="true" 
+          yearRange="{{selectRangoFechas}}" 
+          [readonlyInput]="false"
+          appendTo="body" 
+          [showIcon]="true"></p-calendar>
+      </div>
+    </div>
+
+    <!-- <div class="row d-flex justify-content-between mb-3">
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Id Acceso </label>
+        <input type="number" formControlName="id_Acceso" class="form-control" [class.is-invalid]="idAcceso_NoValido">
+        <small *ngIf="idAcceso_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Clave Puesto </label>
+        <input type="number" formControlName="clave_Puesto" class="form-control" [class.is-invalid]="clavePuesto_NoValido">
+        <small *ngIf="clavePuesto_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+
+      <div class="col-md-4 bg-input-small-3">
+        <label class="form-label color-label"> Clave P INT </label>
+        <input type="number"  formControlName="clave_p_Int" class="form-control" [class.is-invalid]="clavePInt_NoValido">
+        <small *ngIf="clavePInt_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div> -->
+
+    <div class="row bg-input mb-3">
+      <div class="col-md-12">
+        <label class="form-label color-label"> Estado </label>
+        <p-dropdown 
+        [options]="pEstatus" 
+        placeholder="Selecciona el estatus"
+        formControlName="estatus"
+        [autoDisplayFirst]="false"
+        optionLabel="idEstatus" 
+        optionValue="nombre"
+        autoWidth="false"
+        [class.ng-dirty]="estatus_NoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="estatus_NoValido" class="text-danger">*Campo requerido</small>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button type="button" pButton icon="pi pi-check" (click)="savePersonal()" class="p-button-rounded btn-red-wine me-3" label="Guardar"></button>
+      <button type="button" pButton icon="pi pi-times" (click)="closeModal()" class="p-button-rounded btn-gray" label="Cancelar"></button>
+    </div>
+  </form>

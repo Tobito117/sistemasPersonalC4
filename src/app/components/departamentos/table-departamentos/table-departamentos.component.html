@@ -1,0 +1,82 @@
+<div class="col-md-12 px-3">
+
+  <h2 class="pb-3 title-table">Departamentos</h2>
+
+  <div class="card">
+    <p-table #dt
+      [rows]="10"
+      [paginator]="true"
+      responsiveLayout="stack"
+      [value]="departamentos"
+      [rowHover]="true"
+      [globalFilterFields]="['nombre']"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} registros"
+      [rowsPerPageOptions]="[10,25,50]">
+      <ng-template pTemplate="caption">
+        <div class="d-flex justify-content-between">
+          <div>
+            <button pButton pRipple label="Agregar" icon="pi pi-plus" (click)="showModalDepartamento()" class="p-button-rounded btn-red-wine me-2"></button>
+            <!-- <button pButton pRipple label="Descargar listado" icon="pi pi-download" class="p-button-rounded btn-red-wine"></button> -->
+          </div>
+
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="filterGlobalTable($event, 'contains')" placeholder="Buscar por nombre">
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+          <th pSortableColumn="clave">Clave <p-sortIcon field="clave"></p-sortIcon></th>
+          <th pSortableColumn="extension">Extensión <p-sortIcon field="extension"></p-sortIcon></th>
+          <th pSortableColumn="descripcion">Descripción <p-sortIcon field="descripcion"></p-sortIcon></th>
+          <th pSortableColumn="estatus">Estatus <p-sortIcon field="estatus"></p-sortIcon></th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-departamento let-columns="columns">
+        <tr>
+          <td>{{departamento.nombre}}</td>
+          <td>{{departamento.claveDepartamento}}</td>
+          <td>{{departamento.extensionTelefono}}</td>
+          <td>{{departamento.descripcion}}</td>
+          <td>
+            <p-badge *ngIf="departamento.estatus" value="Activo" severity="success"></p-badge>
+            <p-badge *ngIf="!departamento.estatus" value="Inactivo" severity="danger"></p-badge>
+          </td>
+          <td>
+            <button pButton 
+              pTooltip="Editar" 
+              tooltipPosition="top" 
+              pRipple 
+              icon="pi pi-pencil" 
+              (click)="showModalDepartamento(departamento.idDepartamento)"
+              class="p-button-rounded btn-red-wine me-2">
+            </button>
+            <button pButton 
+              pTooltip="Visualizar detalles" 
+              tooltipPosition="top" 
+              pRipple 
+              icon="pi pi-eye" 
+              (click)="showModalDetalleDepartamento(departamento.idDepartamento)" 
+              class="p-button-rounded btn-pink me-2">
+            </button>
+            <p-inputSwitch [(ngModel)]="departamento.deshabilitar"
+              pTooltip="Deshabilitar/Habilitar" 
+              tooltipPosition="top" 
+              (onChange)="disableDepartamento($event, departamento.idDepartamento, departamento.estatus)">
+            </p-inputSwitch>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<!---Confirm dialog--->
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
+<!---End Confirm dialog--->

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngFor="let item of itemsNavbar">
+          <button class="p-button-secondary p-button-text text-white d-flex d-lg-none" 
+            data-bs-toggle="collapse" 
+            data-bs-target=".navbar-collapse.show"
+            [routerLink]="[item.url]" 
+            routerLinkActive="router-link-active"
+            pButton 
+            pRipple 
+            type="button" 
+            label="{{item.nombre}}" 
+            icon="{{item.icon}}">
+          </button>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button class="p-button-secondary p-button-text text-white d-flex d-lg-none" 
+        pButton 
+        pRipple
+        data-bs-toggle="collapse" 
+        data-bs-target=".navbar-collapse.show"
+        type="button" 
+        label="Cerrar sesión" 
+        (click)="logout()"
+        icon="pi pi-power-off">
+      </button>
+        <button class="p-button-rounded btn-gray  me-4 d-none d-lg-flex" pButton pRipple type="button" icon="pi pi-user" (click)="menu.toggle($event)"></button>
+        <p-menu #menu [popup]="true" [model]="itemsUsuario"></p-menu>
+      </div>
+    </div>
+  </div>
+</nav>

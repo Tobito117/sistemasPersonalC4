@@ -1,0 +1,133 @@
+<form [formGroup]="catalogoHorarioForm">
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Clave</label>
+      <input type="text" formControlName="clave" class="form-control" [class.is-invalid]="claveNoValida">
+      <small *ngIf="claveNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="row bg-input mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Descripción</label>
+      <input type="text" formControlName="descripcion" class="form-control" [class.is-invalid]="descripcionNoValida">
+      <small *ngIf="descripcionNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Hora de entrada</label>
+      <p-calendar
+        class="w-100"
+        formControlName="hora_entrada"
+        autoWidth="false"
+        [style]="{'width':'100%'}"
+        [class.ng-dirty]="horaEntradaNoValida"
+        [timeOnly]="true"
+        hourFormat="12">
+      </p-calendar> <br>
+      <small *ngIf="horaEntradaNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Hora de salida</label>
+      <p-calendar
+        class="w-100"
+        formControlName="hora_salida"
+        autoWidth="false"
+        [style]="{'width':'100%'}"
+        [class.ng-dirty]="horaSalidaNoValida"
+        [timeOnly]="true"
+        hourFormat="12">
+      </p-calendar> <br>
+      <small *ngIf="horaSalidaNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <!-- <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Horario quebrado</label> <br>
+      <p-inputSwitch 
+        pTooltip="Deshabilitar/Habilitar"
+        tooltipPosition="top"
+        (onChange)="activateSegundoHorario($event)">
+      </p-inputSwitch>
+    </div>
+  </div> -->
+
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Tipo de horario</label>
+      <p-dropdown 
+        [options]="tipoHorarios" 
+        placeholder="Seleccione el tipo de horario"
+        formControlName="tipo_horario" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idTipoHorario"
+        autoWidth="false"
+        [class.ng-dirty]="tipoHorarioNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="tipoHorarioNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+    <div class="col-md-6 bg-input-small">
+      <label class="form-label color-label">Cantidad de retardos permitidos</label> <br>
+      <p-inputNumber formControlName="cantidad_retardo" [min]="0" [max]="5" [class.ng-dirty]="cantidadRetardoNoValida"></p-inputNumber> <br>
+      <small *ngIf="cantidadRetardoNoValida" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="accordion mb-3">
+    <div class="row justify-content-between accordion-item border-0">
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label">Horario quebrado</label> <br>
+        <p-inputSwitch 
+          formControlName="activar_segundo_horario"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseHorario2"
+          aria-expanded="false"
+          aria-controls="collapseHorario2">
+        </p-inputSwitch>
+      </div>
+
+      <div class="col-md-6 bg-input-small">
+        <label class="form-label color-label">Color para el horario</label> <br>
+        <p-colorPicker formControlName="color_horario" appendTo="body"></p-colorPicker>
+      </div>
+
+      <div id="collapseHorario2" class="accordion-collapse collapse {{classCollapse}}">
+        <div class="accordion-body px-0">
+          <div class="row d-flex justify-content-between">
+            <div class="col-md-6 bg-input-small">
+              <label class="form-label color-label">Segunda hora de entrada</label>
+              <p-calendar class="w-100" formControlName="hora_entrada2" autoWidth="false" [style]="{'width':'100%'}" [timeOnly]="true" hourFormat="12"></p-calendar> <br>
+              <small *ngIf="horaEntrada2NoValida" class="text-danger">*Campo requerido</small>
+            </div>
+            <div class="col-md-6 bg-input-small">
+              <label class="form-label color-label">Segunda hora de salida</label> <br>
+              <p-calendar class="w-100" formControlName="hora_salida2" autoWidth="false" [style]="{'width':'100%'}" [timeOnly]="true" hourFormat="12"></p-calendar> <br>
+              <small *ngIf="horaSalida2NoValida" class="text-danger">*Campo requerido</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button type="button" pButton icon="pi pi-check" (click)="saveHorario()" class="p-button-rounded btn-red-wine me-3" label="Guardar"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="closeModal()" class="p-button-rounded btn-gray" label="Cancelar"></button>
+  </div>
+</form>
+
+<!-- Toast -->
+<p-toast key="keyModal"></p-toast>
+<!-- End Toast -->
+
+<!-- Loading spinner -->
+<div class="progress-spinner" *ngIf="loading">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<!-- End Loading spinner -->

@@ -1,0 +1,60 @@
+<dl>
+  <div class="bg-data mb-3">
+    <dt class="color-label">Clave</dt>
+    <dd>{{horario.clave}}</dd>
+  </div>
+
+  <div class="bg-data mb-3">
+    <dt class="color-label">Descripción</dt>
+    <dd>{{horario.descripcion}}</dd>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Hora de entrada</dt>
+        <dd>{{horario.hora_entrada | date: 'shortTime'}}</dd>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Hora de salida</dt>
+        <dd>{{horario.hora_salida | date: 'shortTime'}}</dd>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Segunda hora de entrada</dt>
+        <dd>{{horario.hora_entrada2 == '' ? "No aplica" : horario.hora_entrada2 | date: 'shortTime'}}</dd>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Segunda hora de salida</dt>
+        <dd>{{horario.hora_salida2 == '' ? "No aplica" : horario.hora_salida2 | date: 'shortTime'}}</dd>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Cantidad de retardos permitidos</dt>
+        <dd>{{horario.cantidadRetardo}} veces</dd>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bg-data mb-3">
+        <dt class="color-label">Tipo de horario</dt>
+        <dd>{{horario.fk_idTipoHorario}}</dd>
+      </div>
+    </div>
+  </div>
+</dl>
+
+<div class="d-flex justify-content-end">
+  <button type="button" pButton (click)="closeModal()" class="p-button-rounded btn-red-wine me-3" label="Aceptar"></button>
+</div>

@@ -1,0 +1,47 @@
+<div class="container-fluid bg-transparent">
+  <div class="row d-flex justify-content-center align-items-center height-vh m-0 bg-transparent">
+    <div class="col-12 d-flex align-items-center justify-content-center">
+      
+      <div class="row m-0">
+        <div class="col-lg-6 d-flex align-items-center text-center">
+          <img src="assets/img/logo_SSPC_horizontal.jpg" alt="Logo SSPC" class="img-fluid" width="400">
+        </div>
+
+        <div class="col-lg-6 col-md-12 bg-white px-4 pt-3">
+          <h3 class="card-title mb-4 text-center inter-bold">Iniciar sesión</h3>
+          <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
+            <div class="row align-items-center">
+              <div class="col-3">
+                <label for="inputUser" class="col-form-label">Usuario</label>
+              </div>
+              <div class="col-9">
+                <input type="text" class="form-control" formControlName="idUsuario" [class.is-invalid]="idUsuarioNoValido">
+                <div class="invalid-feedback" *ngIf="idUsuarioNoValido">Campo requerido*</div>
+              </div>
+            </div>
+
+            <div class="row align-items-center mt-4">
+              <div class="col-3">
+                <label for="inputPassword" class="col-form-label">Contraseña</label>
+              </div>
+              <div class="col-9">
+                <input type="password" class="form-control" formControlName="contrasenia" [class.is-invalid]="contraseniaNoValida">
+                <div class="invalid-feedback" *ngIf="contraseniaNoValida">Campo requerido*</div>
+              </div>
+            </div>
+            <div class="fg-actions d-flex justify-content-center mt-4">
+              <button pButton pRipple type="submit" label="Ingresar" class="p-button-rounded btn-red-wine"></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Loading spinner -->
+<div class="progress-spinner" *ngIf="loading">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<!-- End Loading spinner -->

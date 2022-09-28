@@ -1,0 +1,256 @@
+<form [formGroup]="empleadoForm">
+  
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control" [class.is-invalid]="nombreNoValido">
+      <small *ngIf="nombreNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Apellido paterno</label>
+      <input type="text" formControlName="apPaterno" class="form-control" [class.is-invalid]="apPaternoNoValido">
+      <small *ngIf="apPaternoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Apellido materno</label>
+      <input type="text" formControlName="apMaterno" class="form-control" [class.is-invalid]="apMaternoNoValido">
+      <small *ngIf="apMaternoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <h6 class="color-label">Datos generales</h6>
+  <hr>
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Correo electrónico</label>
+      <input type="text" formControlName="correo" class="form-control" [class.is-invalid]="correoNoValido">
+      <small *ngIf="correoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Número de teléfono</label>
+      <p-inputNumber 
+        class="w-100"
+        formControlName="telefono" 
+        [maxlength]="10" 
+        autoWidth="false"
+        [class.ng-dirty]="telefonoNoValido"
+        [useGrouping]="false"
+        [style]="{'width':'100%'}">
+      </p-inputNumber>
+      <small *ngIf="telefonoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Fecha de nacimiento</label>
+      <p-calendar 
+        formControlName="fechaNacimiento" 
+        [monthNavigator]="true" 
+        dateFormat="dd-M-yy" 
+        [yearNavigator]="true" 
+        yearRange="{{selectRangoFechas}}" 
+        [readonlyInput]="true" 
+        appendTo="body" 
+        [showIcon]="true"></p-calendar>
+
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Estado civil</label>
+      <p-dropdown 
+        [options]="estadosCiviles" 
+        placeholder="Seleccione el estado civil"
+        formControlName="estadoCivil" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="nombre"
+        autoWidth="false"
+        [class.ng-dirty]="estadoCivilNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="estadoCivilNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Género</label>
+      <p-dropdown 
+        [options]="generos" 
+        placeholder="Seleccione el género"
+        formControlName="genero" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idGenero"
+        autoWidth="false"
+        [class.ng-dirty]="generoNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="generoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Hijos</label> <br>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="hijos" [binary]="true" inputId="inputHijos"></p-checkbox>
+        <label class="ms-2" for="inputHijos">{{empleadoForm.controls['hijos'].value ? "Tiene hijos" : "No tiene hijos"}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex bg-input justify-content-between mb-3">
+    <div class="col-md-12">
+      <label class="form-label color-label">Domicilio completo</label>
+      <input type="text" formControlName="domicilio" class="form-control" [class.is-invalid]="domicilioNoValido">
+      <small *ngIf="domicilioNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <h6 class="color-label">Datos institucionales</h6>
+  <hr>
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">Puesto</label>
+      <p-dropdown 
+        [options]="puestos" 
+        placeholder="Seleccione el puesto"
+        formControlName="fk_idPuesto" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idPuesto"
+        autoWidth="false"
+        [class.ng-dirty]="idPuestoNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="idPuestoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">Corporación</label>
+      <p-dropdown 
+        [options]="corporaciones" 
+        placeholder="Seleccione la corporación"
+        formControlName="fk_idCorporacion" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idCorporacion"
+        autoWidth="false"
+        [class.ng-dirty]="idCorporacionNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="idCorporacionNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">Recurso de pago</label>
+      <p-dropdown 
+        [options]="recursosPagos" 
+        placeholder="Seleccione el recurso de pago"
+        formControlName="fk_idRecursoPago" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idRecursoPago"
+        autoWidth="false"
+        [class.ng-dirty]="idRecursoPagoNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="idRecursoPagoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">CUIP</label>
+      <input type="text" formControlName="cuip" class="form-control">
+    </div>
+  </div>
+
+  <h6 class="color-label">Datos académicos</h6>
+  <hr>
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">Grado académico</label>
+      <p-dropdown 
+        [options]="gradosAcademicos" 
+        placeholder="Seleccione el grado académico"
+        formControlName="fk_idGradoAcademico" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idGradoAcademico"
+        autoWidth="false"
+        [class.ng-dirty]="idGradoAcademicoNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="idGradoAcademicoNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">Carrera</label>
+      <p-dropdown 
+        [options]="carreras" 
+        placeholder="Seleccione la carrera"
+        formControlName="fk_idCarrera" 
+        [autoDisplayFirst]="false"
+        optionLabel="nombre" 
+        optionValue="idCarrera"
+        autoWidth="false"
+        [class.ng-dirty]="idCarreraNoValido"
+        [showClear]="true"
+        [style]="{'width':'100%'}">
+      </p-dropdown>
+      <small *ngIf="idCarreraNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <h6 class="color-label">Datos personales</h6>
+  <hr>
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">CURP</label>
+      <input type="text" formControlName="curp" [maxlength]="18" class="form-control" [class.is-invalid]="curpNoValido">
+      <small *ngIf="curpNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">RFC</label>
+      <input type="text" formControlName="rfc" [maxlength]="13" class="form-control" [class.is-invalid]="rfcNoValido">
+      <small *ngIf="rfcNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+
+    <div class="col-md-4 bg-input-small-3">
+      <label class="form-label color-label">Tipo de sangre</label>
+      <input type="text" formControlName="tipoSangre" [maxlength]="5" class="form-control">
+    </div>
+  </div>
+
+  <h6 class="color-label">Otros datos</h6>
+  <hr>
+  <div class="row d-flex justify-content-between mb-3">
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">Certificado de vacunación</label>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="certificadoVacunacion" [binary]="true" inputId="inputCertificadoVacunacion"></p-checkbox>
+        <label class="ms-2" for="inputCertificadoVacunacion">{{empleadoForm.controls['certificadoVacunacion'].value ? "Tiene certificado" : "No tiene certificado"}}</label>
+      </div>
+    </div>
+
+    <div class="col-md-4 bg-input-small-2">
+      <label class="form-label color-label">Vacaciones</label> <br>
+      <p-inputNumber formControlName="vacaciones" [min]="0" [max]="14" [class.ng-dirty]="vacacionesNoValido"></p-inputNumber> <br>
+      <small *ngIf="vacacionesNoValido" class="text-danger">*Campo requerido</small>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button type="button" pButton icon="pi pi-check" (click)="saveEmpleado()" class="p-button-rounded btn-red-wine me-3" label="Guardar"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="closeModal()" class="p-button-rounded btn-gray" label="Cancelar"></button>
+  </div>
+</form>
